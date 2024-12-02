@@ -77,6 +77,20 @@ a, a:link{
     overflow: hidden;
 }
 
+/*main*/
+.main .container{
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+.container > h1 {
+    font-size: .8rem;
+}
+.container > h2 {
+    font-size: .725rem;
+    font-weight: normal;
+}
+
 /*footer*/
 .footer{
     padding: 1rem;
@@ -84,6 +98,9 @@ a, a:link{
 }
 .footer hr{
     margin: 1rem 0;
+    border: 0;
+    height: 1px;
+    background: var(--secondary-bg-color);
 }
 .buy button{
     background-color: var(--secondary-bg-color);
