@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
+    <header class="header d-flex space-between">
         <nav class="header__nav">
-            <ul>
+            <ul class="d-flex gap-1">
                 <li>
                     <a href="#">Home</a>
                 </li>
@@ -29,7 +30,7 @@
         <%- body %>
     </div>
     <footer>
-        <div class="footer__top">
+        <div class="footer__top d-flex space-between">
             <div class="copy">
                 <p>&copy; 2024 My Site</p>
             </div>
