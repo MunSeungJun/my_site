@@ -26,10 +26,15 @@
             <button>Buy Now</button>
         </div>
     </header>
-    <div class="container">
-        <%- body %>
+    <div class="hero">
+        <img src="/images/hero-title.png" alt="사이트이미지">
     </div>
-    <footer>
+    <main class="main">
+        <div class="container">
+            <%- body %>
+        </div>
+    </main>
+    <footer class="footer">
         <div class="footer__top d-flex space-between">
             <div class="copy">
                 <p>&copy; 2024 My Site</p>
@@ -37,12 +42,39 @@
             <div class="brand">
                 Developer's Guide
             </div>
-            <div class="Buy">
+            <div class="buy">
                 <button>Purchase now</button>
             </div>
         </div>
         <hr>
-        <div class="footer__bottom"></div>
+        <div class="footer__bottom d-flex space-between">
+            <nav class="footer__nav">
+                <ul class="d-flex gap-1">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="footer__icon">
+                <ul class="d-flex gap-1">
+                    <li>
+                        <a href="#">Facebook</a>
+                    </li>
+                    <li>
+                        <a href="#">Youtube</a>
+                    </li>
+                    <li>
+                        <a href="#">Twitter</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </footer>
 </body>
 </html>

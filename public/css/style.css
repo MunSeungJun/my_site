@@ -3,7 +3,8 @@
     --primary-text-color: #505f98;
     --secondary-text-color: #ffffff;
     --primary-bg-color: #f1f1f1;
-    --secondary-bg-color: #111b47
+    --secondary-bg-color: #111b47;
+    --third-bg-color: #e7ecff
 }
 
 *,
@@ -46,7 +47,7 @@ a, a:link{
     gap: 1rem;
 }
 
-/* header*/
+/*header*/
 .header {
     padding: 1rem;
     color: var(--primary-text-color);
@@ -67,6 +68,25 @@ a, a:link{
     background-color: var(--secondary-bg-color);
     color: var(--secondary-text-color);
     width: 8rem;
+    height: 1.3rem;
+    border-radius: .5rem;
+}
+.hero img{
+    width: 100%;
+}
+
+/*footer*/
+.footer{
+    padding: 1rem;
+    background-color: var(--third-bg-color);
+}
+.footer hr{
+    margin: 1rem 0;
+}
+.buy button{
+    background-color: var(--secondary-bg-color);
+    color: var(--secondary-text-color);
+    width: 5.5rem;
     height: 1.3rem;
     border-radius: .5rem;
 }
