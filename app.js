@@ -8,12 +8,14 @@ const connectDB = require("./config/database")
 const expressLayouts = require('express-ejs-layouts');
 const mainRouter = require("./routes/mainRouter.js")
 const adminRouter = require("./routes/adminRouter.js")
+const cookieParser = require('cookie-parser')
 
 connectDB();
 
 app.use(expressLayouts);
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+app.use(cookieParser)
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.set('layout','layouts/main.ejs')
