@@ -39,6 +39,7 @@ legend {
     display: none;
 }
 
+/* flex */
 .d-flex{
     display: flex;
 }
@@ -51,17 +52,41 @@ legend {
 .flex-end {
     justify-content: flex-end;
 }
-.align-center{
-    align-items: center;
+.flex-1{
+    flex: 1;
 }
+.flex-2{
+    flex: 2;
+}
+.flex-3{
+    flex: 3;
+}
+.flex-4{
+    flex: 4;
+}
+.flex-5{
+    flex: 5;
+}
+
 .gap-1{
     gap: 1rem;
 }
 .gap-2 {
     gap: 2rem
 }
+.my-1 {
+    margin-top: 1rem;
+    margin-top: 1rem;
+}
+.my-2 {
+    margin-top: 2rem;
+    margin-top: 2rem;
+}
 .text-center {
     text-align: center;
+}
+.align-center{
+    align-items: center;
 }
 .text-big{
     font-size: 1.5rem !important
@@ -126,7 +151,7 @@ legend {
     box-shadow: 2px 2px 5px 0 rgba(0,0,0,.2);
     border-radius: 5px;
 }
-#user_id, #user_pw {
+#user_id, #user_pw, #user_pw2 {
     width: 100%;
     padding: .5rem 1rem;
     margin: .25rem 0;
@@ -151,7 +176,14 @@ legend {
 .ctrl {
     flex: 1
 }
-
+/*home*/
+.border-bottom {
+    border-bottom: 1px solid #333;
+}
+.article-body li:hover {
+    color: var(--primary-text-color);
+    font: bold;
+}
 /*footer*/
 .footer{
     padding: 1rem;
