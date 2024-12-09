@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const mainLayout = "../views/layouts/main.ejs"
+const adminLayout = "../views/layouts/admin.ejs"
 const User = require("../models/user.js");
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken");
@@ -25,14 +26,14 @@ router.get('/admin', (req, res) => {
 router.post('/admin', async (req, res) => {
     try {
         const { user_id, user_pw } = req.body;
-        console.log(user_id, user_pw);
+        // console.log(user_id, user_pw);
         const user = await User.find({ user_id });
-        console.log(user);
+        // console.log(user);
         if (!user) {
             return res.status(401).json({ message: "존재하지 않는 사용자입니다" });
         }
 
-        const isValid = bcrypt.compare(user_pw, user.user_pw);
+        const isValid = bcrypt.compare(user_pw, user[0].user_pw);
 
         if (!isValid) {
             return res.status(401).json({ message: "아이디, 비밀번호를 다시 확인하세요" });
@@ -54,25 +55,36 @@ router.post('/admin', async (req, res) => {
 const 토큰체크MW = (req, res, next) => {
     const token = req.cookies.token;
     if (!token) {
-      res.redirect('/admin'); // 토큰 값 없으면, 관리자 로그인 폼으로 리다이렉트
+        res.redirect('/admin'); // 토큰 값 없으면, 관리자 로그인 폼으로 리다이렉트
     }
     next();
-  }
-  
-  router.get("/allPosts", 토큰체크MW, (req, res) => {
+}
+router.get("/allPosts", 토큰체크MW, (req, res) => {
     // 토큰 체크 : 관리자 유무 확인
-    
-    
-    res.render("admin/allPosts", { layout: mainLayout });
-  })
-
-
+    res.render("admin/allPosts", {
+        layout: adminLayout,
+        title: 'allPosts Title',
+        header: 'allPosts Header'
+    });
+})
+/**
+ * 관리자 로그아웃
+ * GET /logout
+ */
+router.get('/logout', (req, res) => {
+    res.clearCookie("token")
+    res.redirect("/")
+})
 /**
  * 회원가입
  * GET
  */
 router.get('/register', (req, res) => {
-    res.send("회원가입 폼을 보여줍니다")
+    res.render("register", {
+        layout: mainLayout,
+        title: 'register Title',
+        header: 'register Header'
+    })
 })
 /**
  * 회원가입 요청
