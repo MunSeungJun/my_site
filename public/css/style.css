@@ -22,7 +22,7 @@ body{
     font-size: .8rem;
     color: #333;
 }
-li{
+ul, ol{
     list-style: none;
     margin: 0;
 }
@@ -48,11 +48,17 @@ legend {
 .justify-center{
     justify-items: center;
 }
+.flex-end {
+    justify-content: flex-end;
+}
 .align-center{
     align-items: center;
 }
 .gap-1{
     gap: 1rem;
+}
+.gap-2 {
+    gap: 2rem
 }
 .text-center {
     text-align: center;
@@ -138,6 +144,12 @@ legend {
 .btn-admin {
     background-color: var(--secondary-bg-color);
     color: var(--secondary-text-color);
+}
+.body {
+    flex: 8
+}
+.ctrl {
+    flex: 1
 }
 
 /*footer*/
