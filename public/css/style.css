@@ -4,7 +4,8 @@
     --secondary-text-color: #ffffff;
     --primary-bg-color: #f1f1f1;
     --secondary-bg-color: #111b47;
-    --third-bg-color: #e7ecff
+    --third-bg-color: #e7ecff;
+    --danger-bg-color: red;
 }
 
 *,
@@ -37,6 +38,12 @@ form, fieldset {
 }
 legend {
     display: none;
+}
+input, textarea {
+    font-weight: 100;
+}
+textarea {
+    resize: none;
 }
 
 /* flex */
@@ -76,11 +83,14 @@ legend {
 }
 .my-1 {
     margin-top: 1rem;
-    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 .my-2 {
     margin-top: 2rem;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.mr-1 {
+    margin-right: 1rem;
 }
 .text-center {
     text-align: center;
@@ -99,6 +109,9 @@ legend {
 }
 .text-underlined {
     text-decoration: underline;
+}
+.text-bold {
+    font-weight: bold;
 }
 
 /*header*/
@@ -166,15 +179,20 @@ legend {
     border: 0;
     padding: .5rem 1rem;
 }
+.btn-light {
+    background-color: var(--primary-bg-color);
+}
+.btn-dark {
+    background-color: var(--primary-text-color);
+    color: var(--secondary-text-color);
+}
+.btn-delete:hover {
+    background-color: var(--danger-bg-color);
+    color: var(--secondary-text-color);
+}
 .btn-admin {
     background-color: var(--secondary-bg-color);
     color: var(--secondary-text-color);
-}
-.body {
-    flex: 8
-}
-.ctrl {
-    flex: 1
 }
 /*home*/
 .border-bottom {
@@ -183,6 +201,9 @@ legend {
 .article-body li:hover {
     color: var(--primary-text-color);
     font: bold;
+}
+.article-body li::before {
+    content: '\003e';
 }
 /*footer*/
 .footer{
