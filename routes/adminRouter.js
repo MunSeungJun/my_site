@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken");
 const jwtSecret = process.env.JWT_SECRET; // secretOrPrivate Key
 const cookieParser = require("cookie-parser");
-
+const Post = require("../models/Post.js")
 
 /**
  * 관리자 로그인 요청
@@ -59,13 +59,42 @@ const 토큰체크MW = (req, res, next) => {
     }
     next();
 }
-router.get("/allPosts", 토큰체크MW, (req, res) => {
+router.get("/allPosts", 토큰체크MW, async(req, res) => {
     // 토큰 체크 : 관리자 유무 확인
+    const data = await Post.find().sort({createdAt: -1}) 
+    const len = data.length
     res.render("admin/allPosts", {
+        data,
+        len,
         layout: adminLayout,
         title: 'allPosts Title',
         header: 'allPosts Header'
     });
+})
+/**
+ * 관리자 글쓰기
+ * GET /add
+ */
+router.get('/add',(req, res)=> {
+    res.render("admin/add",{
+        layout: adminLayout,
+        title: "add Tilte",
+        header: "add Header"
+    })
+})
+/**
+ * 관리자 글쓰기
+ * POST /add
+ * DB에 POST 데이터 등록
+ */
+router.post('/add',async(req, res)=> {
+    const {title, content} = req.body
+    const newPost = new Post({
+        title,
+        content
+    })
+    await newPost.save()
+    res.redirect('/allPosts')
 })
 /**
  * 관리자 로그아웃
