@@ -1,0 +1,22 @@
+<div class="article">
+    <div class="article-header">
+        <p class="text-big"><%= data.title %></p>
+        <p class="text-small"><%= data.createdAt.toLocaleString('ko-kr') %></p>
+    </div>
+    <hr class="my-1">
+    <div class="article-main">
+        <p class="text-normal" id="content"><%= data.content %></p>
+    </div>
+    <div class="article-footer my-1">
+        <button type="button" class="btn btn-dark" id="list">목록</button>
+        <button type="button" class="btn btn-light" id="top">맨위로</button>
+    </div>
+    <script>
+        window.addEventListener("DOMContentLoaded", ()=>{
+            const listBtn = document.querySelector("#list")
+            listBtn.addEventListener("click",() => {
+                location.href = '/'
+            })
+        })
+    </script>
+</div>
