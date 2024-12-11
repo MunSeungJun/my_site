@@ -7,7 +7,7 @@ const Post = require("../models/Post.js")
  * 첫 페이지
  * GET /home
  */
-router.get('/', async (req, res) => {
+router.get(['/','/home'], async (req, res) => {
     const data = await Post.find()
     res.render('index', {
         data,
@@ -22,7 +22,12 @@ router.get('/', async (req, res) => {
  */
 router.get('/posts/:id', async (req, res) =>{
     const data = await Post.findById(req.params.id)
-    res.status(200).send(data)
+    res.render('post', {
+        data,
+        layout:mainLayout,
+        title: 'My site',
+        header: 'Post Header'
+    })
 })
 /**
  * About : 사이트 소개
