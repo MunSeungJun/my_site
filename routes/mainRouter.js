@@ -8,7 +8,7 @@ const Post = require("../models/Post.js")
  * GET /home
  */
 router.get(['/','/home'], async (req, res) => {
-    const data = await Post.find()
+    const data = await Post.find().sort({createdAt: -1}) 
     res.render('index', {
         data,
         layout: mainLayout,
