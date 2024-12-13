@@ -21,8 +21,8 @@
             }) %></p>
         </div>
         <div class="flex-1">
-            <button type="button" class="btn btn-dark">수정</button>
-            <button type="button" class="btn">삭제</button>
+            <a href="/edit/<%= post.id %>" class="btn btn-dark">수정</a>
+            <a href="/delete" class="btn">삭제</a>
         </div>
     </li>
     <% }) %>
