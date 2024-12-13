@@ -59,9 +59,9 @@ const 토큰체크MW = (req, res, next) => {
     }
     next();
 }
-router.get("/allPosts", 토큰체크MW, async(req, res) => {
+router.get("/allPosts", 토큰체크MW, async (req, res) => {
     // 토큰 체크 : 관리자 유무 확인
-    const data = await Post.find().sort({createdAt: -1}) 
+    const data = await Post.find().sort({ createdAt: -1 })
     const len = data.length
     res.render("admin/allPosts", {
         data,
@@ -75,8 +75,8 @@ router.get("/allPosts", 토큰체크MW, async(req, res) => {
  * 관리자 글쓰기
  * GET /add
  */
-router.get('/add',(req, res)=> {
-    res.render("admin/add",{
+router.get('/add', (req, res) => {
+    res.render("admin/add", {
         layout: adminLayout,
         title: "add Tilte",
         header: "add Header"
@@ -87,14 +87,27 @@ router.get('/add',(req, res)=> {
  * POST /add
  * DB에 POST 데이터 등록
  */
-router.post('/add',async(req, res)=> {
-    const {title, content} = req.body
+router.post('/add', async (req, res) => {
+    const { title, content } = req.body
     const newPost = new Post({
         title,
         content
     })
     await newPost.save()
     res.redirect('/allPosts')
+})
+/**
+ * 관리자 글 수정 폼
+ * GET /edit/:id
+ */
+router.get('/edit/:id', async(req, res) => {
+    const data = await Post.findById(req.params.id)
+    res.render('admin/edit', {
+        data,
+        layout: adminLayout,
+        title: "edit Page",
+        header: "edit Header"
+    })
 })
 /**
  * 관리자 로그아웃
