@@ -62,10 +62,8 @@ const 토큰체크MW = (req, res, next) => {
 router.get("/allPosts", 토큰체크MW, async (req, res) => {
     // 토큰 체크 : 관리자 유무 확인
     const data = await Post.find().sort({ createdAt: -1 })
-    const len = data.length
     res.render("admin/allPosts", {
         data,
-        len,
         layout: adminLayout,
         title: 'allPosts Title',
         header: 'allPosts Header'
@@ -100,7 +98,7 @@ router.post('/add', async (req, res) => {
  * 관리자 글 수정 폼
  * GET /edit/:id
  */
-router.get('/edit/:id', async(req, res) => {
+router.get('/edit/:id', async (req, res) => {
     const data = await Post.findById(req.params.id)
     res.render('admin/edit', {
         data,
@@ -108,6 +106,23 @@ router.get('/edit/:id', async(req, res) => {
         title: "edit Page",
         header: "edit Header"
     })
+})
+/**
+ * 관리자 글 업데이트
+ * PUT
+ */
+router.put('/edit/:id', async (req, res) => {
+    const { title, content } = req.body
+    const data = await Post.findByIdAndUpdate(req.params.id, { title, content })
+    res.redirect("/allPosts")
+})
+/**
+ * 관리자 글 삭제
+ * GET
+ */
+router.get('/remove/:id', async (req, res) => {
+    const data = await Post.findByIdAndDelete({ _id: req.params.id })
+    res.redirect('/allPosts')
 })
 /**
  * 관리자 로그아웃
