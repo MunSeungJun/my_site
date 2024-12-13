@@ -194,6 +194,12 @@ textarea {
     background-color: var(--secondary-bg-color);
     color: var(--secondary-text-color);
 }
+.btn-write {
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+}
 /*home*/
 .border-bottom {
     border-bottom: 1px solid #333;

@@ -99,7 +99,8 @@ router.post('/add', async (req, res) => {
  * GET /edit/:id
  */
 router.get('/edit/:id', async (req, res) => {
-    const data = await Post.findById(req.params.id)
+    const real_id = await Post.findOne({uuid: req.params.id})
+    const data = await Post.findById(real_id)
     res.render('admin/edit', {
         data,
         layout: adminLayout,
@@ -113,7 +114,8 @@ router.get('/edit/:id', async (req, res) => {
  */
 router.put('/edit/:id', async (req, res) => {
     const { title, content } = req.body
-    const data = await Post.findByIdAndUpdate(req.params.id, { title, content })
+    const real_id = await Post.findOne({uuid: req.params.id})
+    const data = await Post.findByIdAndUpdate(real_id, { title, content })
     res.redirect("/allPosts")
 })
 /**
@@ -121,7 +123,8 @@ router.put('/edit/:id', async (req, res) => {
  * GET
  */
 router.get('/remove/:id', async (req, res) => {
-    const data = await Post.findByIdAndDelete({ _id: req.params.id })
+    const real_id = await Post.findOne({uuid: req.params.id})
+    const data = await Post.findByIdAndDelete(real_id)
     res.redirect('/allPosts')
 })
 /**

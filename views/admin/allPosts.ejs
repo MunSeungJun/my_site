@@ -1,7 +1,7 @@
 <h2 class="text-center text-big">Posts</h2>
 <div class="header d-flex space-between align-center">
-    <span>Total : <% len %></span>
-    <button type="button" class="btn" id="add">글쓰기</button>
+    <span>Total : <%= data.length %></span>
+    <button type="button" class="btn btn-write" id="add" title="글쓰기"><i class="fa-solid fa-plus"></i></button>
 </div>
 <div class="article-header d-flex">
     <p class="flex-5 text-center">제목</p>
@@ -10,10 +10,13 @@
 </div>
 <hr>
 <ul class="article-body">
+    <% if (data.length == 0) { %>
+        <p class="my-1 text-center">등록된 게시물이 없습니다</p>
+    <% } else { %>
     <% data.forEach(post => { %>
     <li class="d-flex space-between align-center my-1">
         <div class="d-flex flex-4 space-between align-center">
-            <p class="title"><a href="#"><%= post.title %></a></p>
+            <p class="title"><a href="posts/<%= post._id %>#content"><%= post.title %></a></p>
             <p class="wr_date mr-1 text-small"><%= post.createdAt.toLocaleString('ko-kr',{
                 year: '2-digit',
                 month: '2-digit',
@@ -21,11 +24,12 @@
             }) %></p>
         </div>
         <div class="flex-1">
-            <a href="/edit/<%= post.id %>" class="btn btn-dark">수정</a>
-            <a href="/delete" class="btn">삭제</a>
+            <a href="/edit/<%= post.uuid %>" class="btn btn-dark" title="수정"><i class="fa-solid fa-pen-to-square"></i></a>
+            <a href="/remove/<%= post.uuid %>" class="btn" title="삭제"><i class="fa-solid fa-trash"></i></a>
         </div>
     </li>
     <% }) %>
+    <% } %>
 </ul>
 <script>
     window.addEventListener("DOMContentLoaded", () => {

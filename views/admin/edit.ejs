@@ -1,7 +1,7 @@
 <div class="form-ui">
     <h2>수정하기</h2>
     <hr class="my-1">
-    <form action="/edit" method="post">
+    <form action="/edit/<%= data.uuid %>?_method=PUT" method="post">
         <div class="d-flex">
             <label for="title" class="flex-1 text-center text-bold">제목</label>
             <input type="text" name="title" id="title" class="flex-4" value="<%= data.title %>">
